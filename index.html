@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Profesional</title>
+    <!-- Tipografía elegante y moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES DE COLOR (Marrón pastel, beige y blanco) --- */
+        :root {
+            --bg-gradient-start: #fbf9f6;
+            --bg-gradient-end: #f0eae1;
+            --white: #ffffff;
+            --text-dark: #4a3e3d;
+            --text-muted: #8c7a6b;
+            --accent-pastel: #d9c5b2;
+            --accent-hover: #bfa893;
+            --shadow-soft: rgba(163, 145, 131, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* --- CABECERA --- */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* --- CONTENEDOR DE TARJETAS (GRID) --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+            padding: 10px;
+        }
+
+        /* --- TARJETA ESTILO BOTÓN (Inspirado en image_eb1ec2.png pero estilizado) --- */
+        .portfolio-card {
+            background-color: var(--white);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            text-decoration: none; /* Hace que actúe como un enlace limpio */
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            
+            /* Animaciones de entrada y transición */
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            
+            /* Animación de carga inicial */
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        /* Retrasos de animación para efecto cascada */
+        .portfolio-card:nth-child(1) { animation-delay: 0.2s; }
+        .portfolio-card:nth-child(2) { animation-delay: 0.4s; }
+        .portfolio-card:nth-child(3) { animation-delay: 0.6s; }
+
+        /* --- EFECTOS HOVER (ANIMACIÓN DE BOTÓN) --- */
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(140, 122, 107, 0.25);
+            border-color: var(--accent-pastel);
+        }
+
+        /* Efecto destello sutil de fondo al pasar el mouse */
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.6s;
+        }
+        .portfolio-card:hover::before {
+            left: 100%;
+        }
+
+        /* --- CONTENEDOR DE IMAGEN/ICONO --- */
+        .card-image-wrapper {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: var(--bg-gradient-end);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-card:hover .card-image-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Imagen interna por defecto (puedes reemplazar el src por tus fotos) */
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- TEXTOS --- */
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* --- BOTÓN INFERIOR --- */
+        .card-btn {
+            background-color: var(--accent-pastel);
+            color: var(--white);
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 197, 178, 0.4);
+        }
+
+        .portfolio-card:hover .card-btn {
+            background-color: var(--text-muted);
+            transform: scale(1.05);
+        }
+
+        /* --- ANIMACIONES CSS --- */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsivo para pantallas pequeñas */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .portfolio-grid { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mi Portafolio Creativo</h1>
+        <p>Proyectos, pasiones y soluciones con una estética minimalista</p>
+    </header>
+
+    <div class="portfolio-grid">
+
+        <!-- TARJETA / BOTÓN 1 -->
+        <a href="#proyectos" class="portfolio-card">
+            <div class="card-image-wrapper">
+                <!-- Reemplaza esta URL por la imagen real que desees -->
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Diseño de Interiores">
+            </div>
+            <h2 class="card-title">Diseño de Espacios</h2>
+            <p class="card-description">Creación de ambientes armónicos y funcionales utilizando paletas orgánicas y luz natural.</p>
+            <span class="card-btn">Ver Proyectos</span>
+        </a>
+
+        <!-- TARJETA / BOTÓN 2 -->
+        <a href="#identidad" class="portfolio-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Identidad de Marca">
+            </div>
+            <h2 class="card-title">Branding Elegante</h2>
+            <p class="card-description">Desarrollo de identidades visuales únicas para marcas que buscan transmitir calma y profesionalismo.</p>
+            <span class="card-btn">Explorar Marcas</span>
+        </a>
+
+        <!-- TARJETA / BOTÓN 3 -->
+        <a href="#consultoria" class="portfolio-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Asesorías">
+            </div>
+            <h2 class="card-title">Asesoría Estética</h2>
+            <p class="card-description">Sesiones personalizadas para definir el rumbo visual y estratégico de tu negocio digital.</p>
+            <span class="card-btn">Solicitar Cita</span>
+        </a>
+
+    </div>
+
+</body>
+</html>
