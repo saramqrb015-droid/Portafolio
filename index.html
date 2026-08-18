@@ -3,22 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Profesional</title>
-    <!-- Tipografía elegante y moderna -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <title>Pink Kawaii Dashboard</title>
+
     <style>
-        /* --- VARIABLES DE COLOR (Marrón pastel, beige y blanco) --- */
-        :root {
-            --bg-gradient-start: #fbf9f6;
-            --bg-gradient-end: #f0eae1;
-            --white: #ffffff;
-            --text-dark: #4a3e3d;
-            --text-muted: #8c7a6b;
-            --accent-pastel: #d9c5b2;
-            --accent-hover: #bfa893;
-            --shadow-soft: rgba(163, 145, 131, 0.15);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -27,233 +15,501 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            color: var(--text-dark);
             min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(255, 188, 220, 0.35), transparent 25%),
+                radial-gradient(circle at 85% 80%, rgba(255, 211, 232, 0.4), transparent 25%),
+                linear-gradient(135deg, #fff 0%, #fff7fb 50%, #ffeef7 100%);
+            color: #4a3440;
+            overflow-x: hidden;
+        }
+
+        /* Decoración */
+        .background-heart {
+            position: fixed;
+            font-size: 80px;
+            opacity: 0.07;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .heart-1 {
+            top: 10%;
+            left: 4%;
+        }
+
+        .heart-2 {
+            bottom: 12%;
+            right: 5%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: min(1200px, 92%);
+            margin: 0 auto;
+            padding: 45px 0 50px;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .logo {
+            width: 165px;
+            height: 115px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #ff91bd;
+            box-shadow:
+                0 12px 35px rgba(255, 126, 179, 0.18),
+                inset 0 0 20px rgba(255, 173, 208, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ed639b;
+            position: relative;
+        }
+
+        .logo::before {
+            content: "♡";
+            position: absolute;
+            top: 7px;
+            right: 22px;
+            font-size: 20px;
+            color: #ff9ec4;
+        }
+
+        .logo::after {
+            content: "✦";
+            position: absolute;
+            bottom: 10px;
+            left: 22px;
+            font-size: 17px;
+            color: #ffb6d4;
+        }
+
+        /* GRID PRINCIPAL */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.25fr;
+            gap: 18px;
+        }
+
+        .column {
             display: flex;
             flex-direction: column;
+            gap: 18px;
+        }
+
+        /* CARDS */
+        .card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ffafd0;
+            border-radius: 28px;
+            padding: 24px;
+            min-height: 135px;
+            box-shadow: 0 12px 30px rgba(240, 115, 164, 0.12);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #ff7faf;
+            box-shadow: 0 18px 40px rgba(240, 115, 164, 0.2);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 182, 213, 0.15);
+            border-radius: 50%;
+            top: -45px;
+            right: -35px;
+        }
+
+        .card-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 21px;
+            color: #ed639b;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            color: #866773;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* ICONOS */
+        .icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ffb0d1, #ff82b4);
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            color: white;
+            font-size: 21px;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 18px rgba(255, 113, 167, 0.2);
         }
 
-        /* --- CABECERA --- */
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            font-weight: 300;
-        }
-
-        /* --- CONTENEDOR DE TARJETAS (GRID) --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1100px;
-            padding: 10px;
-        }
-
-        /* --- TARJETA ESTILO BOTÓN (Inspirado en image_eb1ec2.png pero estilizado) --- */
-        .portfolio-card {
-            background-color: var(--white);
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            text-decoration: none; /* Hace que actúe como un enlace limpio */
-            color: inherit;
+        /* CARD GRANDE DERECHA */
+        .featured {
+            min-height: 280px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured .icon {
+            width: 56px;
+            height: 56px;
+            font-size: 27px;
+        }
+
+        .featured h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 30px;
+            color: #e85d97;
+            margin-bottom: 10px;
+        }
+
+        .featured p {
+            max-width: 430px;
+            line-height: 1.8;
+            color: #80636f;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            padding: 12px 22px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ff9fc6, #f16d9f);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 9px 20px rgba(235, 96, 151, 0.22);
+            transition: 0.25s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 13px 28px rgba(235, 96, 151, 0.3);
+        }
+
+        /* PANEL INFERIOR */
+        .bottom-panel {
+            margin-top: 18px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 2px solid #ffafd0;
+            border-radius: 28px;
+            min-height: 115px;
+            padding: 24px 28px;
+            display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 10px 30px var(--shadow-soft);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            
-            /* Animaciones de entrada y transición */
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            
-            /* Animación de carga inicial */
-            animation: fadeInUp 0.8s ease-out backwards;
+            gap: 20px;
+            box-shadow: 0 12px 30px rgba(240, 115, 164, 0.12);
         }
 
-        /* Retrasos de animación para efecto cascada */
-        .portfolio-card:nth-child(1) { animation-delay: 0.2s; }
-        .portfolio-card:nth-child(2) { animation-delay: 0.4s; }
-        .portfolio-card:nth-child(3) { animation-delay: 0.6s; }
-
-        /* --- EFECTOS HOVER (ANIMACIÓN DE BOTÓN) --- */
-        .portfolio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(140, 122, 107, 0.25);
-            border-color: var(--accent-pastel);
+        .bottom-info h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: #e85d97;
+            margin-bottom: 4px;
+            font-size: 20px;
         }
 
-        /* Efecto destello sutil de fondo al pasar el mouse */
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.6s;
-        }
-        .portfolio-card:hover::before {
-            left: 100%;
+        .bottom-info p {
+            color: #947583;
+            font-size: 13px;
         }
 
-        /* --- CONTENEDOR DE IMAGEN/ICONO --- */
-        .card-image-wrapper {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background-color: var(--bg-gradient-end);
-            margin-bottom: 25px;
+        .stats {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 3px solid var(--white);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.4s ease;
+            gap: 12px;
         }
 
-        .portfolio-card:hover .card-image-wrapper {
-            transform: scale(1.1) rotate(5deg);
+        .stat {
+            padding: 12px 17px;
+            border-radius: 16px;
+            background: #fff0f7;
+            border: 1px solid #ffc1dc;
+            text-align: center;
+            min-width: 90px;
         }
 
-        /* Imagen interna por defecto (puedes reemplazar el src por tus fotos) */
-        .card-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .stat strong {
+            display: block;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 21px;
+            color: #e85d97;
         }
 
-        /* --- TEXTOS --- */
-        .card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
+        .stat span {
+            font-size: 11px;
+            color: #997384;
         }
 
-        .card-description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: 30px;
+        /* ESTRELLITAS */
+        .sparkle {
+            position: absolute;
+            color: #ff9fc4;
+            font-size: 17px;
+            animation: sparkle 2s ease-in-out infinite;
         }
 
-        /* --- BOTÓN INFERIOR --- */
-        .card-btn {
-            background-color: var(--accent-pastel);
-            color: var(--white);
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(217, 197, 178, 0.4);
+        .sparkle.one {
+            top: 12px;
+            right: 18px;
         }
 
-        .portfolio-card:hover .card-btn {
-            background-color: var(--text-muted);
-            transform: scale(1.05);
+        .sparkle.two {
+            bottom: 15px;
+            right: 20px;
+            animation-delay: 0.8s;
         }
 
-        /* --- ANIMACIONES CSS --- */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+        @keyframes sparkle {
+            0%, 100% {
+                transform: scale(0.8);
+                opacity: 0.45;
             }
-            to {
+
+            50% {
+                transform: scale(1.2);
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr 1fr;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .column:last-child {
+                grid-column: 1 / -1;
             }
         }
 
-        /* Responsivo para pantallas pequeñas */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .portfolio-grid { gap: 20px; }
+        @media (max-width: 650px) {
+            .container {
+                width: 90%;
+                padding-top: 30px;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .column:last-child {
+                grid-column: auto;
+            }
+
+            .bottom-panel {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stats {
+                justify-content: space-between;
+            }
+
+            .stat {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .logo {
+                width: 145px;
+                height: 100px;
+                font-size: 24px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Mi Portafolio Creativo</h1>
-        <p>Proyectos, pasiones y soluciones con una estética minimalista</p>
-    </header>
+    <div class="background-heart heart-1">♡</div>
+    <div class="background-heart heart-2">♡</div>
 
-    <div class="portfolio-grid">
+    <main class="container">
 
-        <!-- TARJETA / BOTÓN 1 -->
-        <a href="#proyectos" class="portfolio-card">
-            <div class="card-image-wrapper">
-                <!-- Reemplaza esta URL por la imagen real que desees -->
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Diseño de Interiores">
+        <!-- LOGO -->
+        <header class="header">
+            <div class="logo">
+                MIRELAND
             </div>
-            <h2 class="card-title">Diseño de Espacios</h2>
-            <p class="card-description">Creación de ambientes armónicos y funcionales utilizando paletas orgánicas y luz natural.</p>
-            <span class="card-btn">Ver Proyectos</span>
-        </a>
+        </header>
 
-        <!-- TARJETA / BOTÓN 2 -->
-        <a href="#identidad" class="portfolio-card">
-            <div class="card-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Identidad de Marca">
+        <!-- CONTENIDO -->
+        <section class="dashboard">
+
+            <!-- COLUMNA 1 -->
+            <div class="column">
+
+                <div class="card">
+                    <span class="sparkle one">✦</span>
+
+                    <div class="icon">♡</div>
+
+                    <div class="card-title">
+                        Bienvenida
+                    </div>
+
+                    <p class="card-text">
+                        Un espacio creado con mucho cariño,
+                        diseño limpio y un pequeño toque kawaii.
+                    </p>
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">☆</div>
+
+                    <div class="card-title">
+                        Comunidad
+                    </div>
+
+                    <p class="card-text">
+                        Conecta con otras personas y descubre
+                        todo lo que tenemos preparado.
+                    </p>
+                </div>
+
             </div>
-            <h2 class="card-title">Branding Elegante</h2>
-            <p class="card-description">Desarrollo de identidades visuales únicas para marcas que buscan transmitir calma y profesionalismo.</p>
-            <span class="card-btn">Explorar Marcas</span>
-        </a>
 
-        <!-- TARJETA / BOTÓN 3 -->
-        <a href="#consultoria" class="portfolio-card">
-            <div class="card-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Asesorías">
+            <!-- COLUMNA 2 -->
+            <div class="column">
+
+                <div class="card">
+
+                    <div class="icon">✦</div>
+
+                    <div class="card-title">
+                        Novedades
+                    </div>
+
+                    <p class="card-text">
+                        Descubre las últimas novedades,
+                        cambios y eventos disponibles.
+                    </p>
+                </div>
+
+                <div class="card">
+
+                    <div class="icon">♡</div>
+
+                    <div class="card-title">
+                        Información
+                    </div>
+
+                    <p class="card-text">
+                        Todo lo que necesitas saber está
+                        organizado en un solo lugar.
+                    </p>
+                </div>
+
             </div>
-            <h2 class="card-title">Asesoría Estética</h2>
-            <p class="card-description">Sesiones personalizadas para definir el rumbo visual y estratégico de tu negocio digital.</p>
-            <span class="card-btn">Solicitar Cita</span>
-        </a>
 
-    </div>
+            <!-- COLUMNA 3 -->
+            <div class="column">
+
+                <div class="card featured">
+
+                    <span class="sparkle one">✦</span>
+                    <span class="sparkle two">♡</span>
+
+                    <div class="icon">🌸</div>
+
+                    <h2>
+                        Bienvenido a nuestro mundo
+                    </h2>
+
+                    <p>
+                        Una experiencia sencilla, elegante y
+                        adorable, combinando tonos blancos,
+                        detalles rosas y un estilo semi-kawaii.
+                    </p>
+
+                    <a href="#" class="button">
+                        Explorar ✧
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PANEL INFERIOR -->
+        <section class="bottom-panel">
+
+            <div class="bottom-info">
+                <h3>
+                    Todo preparado para ti ♡
+                </h3>
+
+                <p>
+                    Disfruta de una interfaz limpia, bonita y moderna.
+                </p>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <strong>24</strong>
+                    <span>Usuarios</span>
+                </div>
+
+                <div class="stat">
+                    <strong>12</strong>
+                    <span>Eventos</span>
+                </div>
+
+                <div class="stat">
+                    <strong>99%</strong>
+                    <span>Online</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 
 </body>
 </html>
